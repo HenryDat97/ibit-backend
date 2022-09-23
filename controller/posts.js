@@ -29,7 +29,7 @@ export const updatePost = async (req, res) => {
         const updatePost = req.body
         const filter = { _id: updatePost._id }
 
-        const post = await PostModel.findOneAndUpdate(filter, updatePost, {
+        const post = await PostModel.findOneAndUpdate(filter, updatePost.likeCount, {
             new: true,
         })
 
