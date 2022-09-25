@@ -69,6 +69,7 @@ export const createUser = async (req, res) => {
         const newUser = req.body
         const user = await new UserModel(newUser)
 
+        console.log(req.body)
         res.status(200).json(user)
     } catch (err) {
         console.log(err)
