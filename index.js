@@ -3,7 +3,7 @@ import express from 'express'
 import bodyParser from 'body-parser'
 import cors from 'cors'
 import posts from './router/posts.js'
-import users from './router/users'
+import users from './router/users.js'
 import mongoose from 'mongoose'
 import dotenv from 'dotenv'
 
