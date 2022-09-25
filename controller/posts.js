@@ -1,9 +1,9 @@
 import { PostModel } from '../models/PostModels.js'
+import { UserModel } from '../models/UserModels.js'
 
 export const getPosts = async (req, res) => {
     try {
         const posts = await PostModel.find()
-        console.log(posts)
         res.status(200).json(posts)
     } catch (err) {
         res.status(500).json({ errors: err })
@@ -31,7 +31,7 @@ export const updatePost = async (req, res) => {
 
         const post = await PostModel.findOneAndUpdate(filter, updatePost, {
             new: true,
-            returnOriginal: false
+            returnOriginal: false,
         })
 
         res.status(200).json(post)
@@ -48,6 +48,28 @@ export const deletePost = async (req, res) => {
         const post = await PostModel.findOneAndDelete(filter)
 
         res.status(200).json(post)
+    } catch (err) {
+        console.log(err)
+        res.status(500).json({ errors: err })
+    }
+}
+
+export const getUsers = async (req, res) => {
+    try {
+        const users = await PostModel.find()
+        res.status(200).json(users)
+    } catch(err) {
+        console.log(err)
+        res.status(500).json({ errors: err })
+    }
+}
+
+export const createUser = async (req, res) => {
+    try {
+        const newUser = req.body
+        const user = await new UserModel(newUser)
+
+        res.status(200).json(user)
     } catch (err) {
         console.log(err)
         res.status(500).json({ errors: err })

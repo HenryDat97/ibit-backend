@@ -3,6 +3,7 @@ import express from 'express'
 import bodyParser from 'body-parser'
 import cors from 'cors'
 import posts from './router/posts.js'
+import users from './router/users'
 import mongoose from 'mongoose'
 import dotenv from 'dotenv'
 
@@ -22,6 +23,7 @@ app.use(bodyParser.urlencoded({ extended: true, limit: '30mb' }))
 app.use('/', cors())
 
 app.use('/posts', posts)
+app.use('/users', users)
 
 // Connect to database, if connect success then start the server
 mongoose
